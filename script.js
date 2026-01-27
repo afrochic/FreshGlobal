@@ -128,20 +128,80 @@ function initScrollAnimations() {
 /* ===================== */
 /* SHIPMENT TRACKING SYSTEM */
 /* ===================== */
+
+// API Configuration - Replace with your actual API keys
+const TRACKING_CONFIG = {
+    // Ship24 API - Tracks 1500+ carriers worldwide (https://www.ship24.com/api)
+    ship24: {
+        apiKey: 'YOUR_SHIP24_API_KEY', // Get from https://www.ship24.com/api
+        baseUrl: 'https://api.ship24.com/public/v1'
+    },
+    // 17Track API - Popular tracking aggregator (https://api.17track.net)
+    track17: {
+        apiKey: 'YOUR_17TRACK_API_KEY', // Get from https://api.17track.net
+        baseUrl: 'https://api.17track.net/track/v2'
+    },
+    // Searates API - Sea freight tracking (https://www.searates.com/services/tracking)
+    searates: {
+        apiKey: 'YOUR_SEARATES_API_KEY', // Get from https://www.searates.com/reference/api
+        baseUrl: 'https://sirius.searates.com/tracking/v1'
+    },
+    // TrackingMore API - 1100+ carriers (https://www.trackingmore.com)
+    trackingMore: {
+        apiKey: 'YOUR_TRACKINGMORE_API_KEY',
+        baseUrl: 'https://api.trackingmore.com/v4'
+    }
+};
+
+// Carrier detection patterns for auto-routing
+const CARRIER_PATTERNS = {
+    // Air Carriers
+    'dhl': /^\d{10,11}$|^[A-Z]{3}\d{7}$/i,
+    'fedex': /^\d{12,22}$|^\d{15}$/,
+    'ups': /^1Z[A-Z0-9]{16}$/i,
+    'emirates': /^176-?\d{8}$/,
+    'qatar': /^157-?\d{8}$/,
+    'kenya_airways': /^706-?\d{8}$/,
+    'ethiopian': /^071-?\d{8}$/,
+
+    // Sea Carriers (Container tracking)
+    'maersk': /^M[A-Z]{3}\d{7}$|^\d{9}$/,
+    'msc': /^MSC[A-Z]\d{6,7}$/i,
+    'cosco': /^COSU\d{7}$/i,
+    'evergreen': /^EGL[UZ]\d{7}$/i,
+    'hapag': /^HLCU\d{7}$/i,
+    'cma_cgm': /^(CMAU|CGMU)\d{7}$/i,
+    'one': /^(ONEY|TCLU)\d{7}$/i,
+    'pil': /^PCIU\d{7}$/i,
+
+    // Container numbers (ISO 6346 format)
+    'container': /^[A-Z]{4}\d{7}$/i,
+
+    // Bill of Lading patterns
+    'bol': /^[A-Z]{4}\d{9,12}$/i,
+
+    // Internal FGS shipments
+    'fgs': /^FGS-\d{4}-\d{6}$/i
+};
+
 function initTrackingSystem() {
     const trackingForm = document.getElementById('trackingForm');
     const trackingResult = document.getElementById('trackingResult');
     const trackingTimeline = document.getElementById('trackingTimeline');
 
-    // Demo tracking data (in production, this would come from an API)
-    const demoShipments = {
+    // Internal FGS shipments database (would be from your backend in production)
+    const internalShipments = {
         'FGS-2024-001234': {
             title: 'Electronics Shipment',
+            carrier: 'Maersk Line',
+            carrierType: 'sea',
             origin: 'Shanghai, China',
             destination: 'Nairobi, Kenya',
             status: 'in-transit',
             statusText: 'In Transit',
             eta: '2024-02-15',
+            vessel: 'Maersk Seletar',
+            containerNo: 'MSKU1234567',
             timeline: [
                 { status: 'completed', title: 'Order Confirmed', date: 'Jan 20, 2024 - 09:00 AM', location: 'Shanghai, China' },
                 { status: 'completed', title: 'Picked Up', date: 'Jan 21, 2024 - 02:30 PM', location: 'Shanghai Port' },
@@ -155,15 +215,18 @@ function initTrackingSystem() {
         },
         'FGS-2024-005678': {
             title: 'Medical Supplies',
+            carrier: 'Emirates SkyCargo',
+            carrierType: 'air',
             origin: 'Dubai, UAE',
             destination: 'Kampala, Uganda',
             status: 'delivered',
             statusText: 'Delivered',
             eta: '2024-01-28',
+            awb: '176-12345678',
             timeline: [
                 { status: 'completed', title: 'Order Confirmed', date: 'Jan 15, 2024 - 10:00 AM', location: 'Dubai, UAE' },
-                { status: 'completed', title: 'Picked Up', date: 'Jan 16, 2024 - 08:00 AM', location: 'Dubai Cargo' },
-                { status: 'completed', title: 'In Transit', date: 'Jan 17, 2024 - 03:00 AM', location: 'Air Freight' },
+                { status: 'completed', title: 'Picked Up', date: 'Jan 16, 2024 - 08:00 AM', location: 'Dubai Cargo Village' },
+                { status: 'completed', title: 'Departed Dubai', date: 'Jan 17, 2024 - 03:00 AM', location: 'DXB Airport' },
                 { status: 'completed', title: 'Arrived Entebbe', date: 'Jan 17, 2024 - 09:00 AM', location: 'Entebbe Airport' },
                 { status: 'completed', title: 'Customs Cleared', date: 'Jan 18, 2024 - 02:00 PM', location: 'Uganda Revenue Authority' },
                 { status: 'completed', title: 'Delivered', date: 'Jan 20, 2024 - 11:30 AM', location: 'Kampala, Uganda' }
@@ -171,11 +234,15 @@ function initTrackingSystem() {
         },
         'FGS-2024-009012': {
             title: 'Agricultural Equipment',
+            carrier: 'CMA CGM',
+            carrierType: 'sea',
             origin: 'Rotterdam, Netherlands',
             destination: 'Dar es Salaam, Tanzania',
             status: 'in-transit',
             statusText: 'At Port',
             eta: '2024-02-08',
+            vessel: 'CMA CGM Zheng He',
+            containerNo: 'CMAU5678901',
             timeline: [
                 { status: 'completed', title: 'Order Confirmed', date: 'Jan 05, 2024 - 11:00 AM', location: 'Rotterdam, Netherlands' },
                 { status: 'completed', title: 'Container Loaded', date: 'Jan 08, 2024 - 09:00 AM', location: 'Rotterdam Port' },
@@ -196,27 +263,36 @@ function initTrackingSystem() {
         // Show loading state
         const submitBtn = trackingForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span class="spinner"></span> Tracking...';
+        submitBtn.innerHTML = '<span class="spinner"></span> Searching carriers...';
         submitBtn.disabled = true;
 
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            // 1. First check internal FGS shipments
+            let shipmentData = internalShipments[trackingNumber];
 
-        // Check demo data or try real API
-        let shipmentData = demoShipments[trackingNumber];
+            if (!shipmentData) {
+                // 2. Detect carrier and fetch from appropriate API
+                const carrier = detectCarrier(trackingNumber);
+                console.log(`Detected carrier: ${carrier} for tracking number: ${trackingNumber}`);
 
-        if (!shipmentData) {
-            // Try fetching from tracking APIs (demo - would need actual API keys)
-            shipmentData = await fetchFromTrackingAPIs(trackingNumber);
-        }
+                submitBtn.innerHTML = `<span class="spinner"></span> Checking ${carrier}...`;
 
-        if (shipmentData) {
-            displayTrackingResult(shipmentData, trackingNumber);
-            trackingResult.classList.add('active');
-            showToast('Shipment found!', 'success');
-        } else {
+                // 3. Try fetching from real tracking APIs
+                shipmentData = await fetchFromTrackingAPIs(trackingNumber, carrier);
+            }
+
+            if (shipmentData) {
+                displayTrackingResult(shipmentData, trackingNumber);
+                trackingResult.classList.add('active');
+                showToast(`Shipment found via ${shipmentData.carrier || 'carrier'}!`, 'success');
+            } else {
+                trackingResult.classList.remove('active');
+                showToast('No shipment found. Try demo: FGS-2024-001234 or enter a valid tracking number', 'error');
+            }
+        } catch (error) {
+            console.error('Tracking error:', error);
             trackingResult.classList.remove('active');
-            showToast('No shipment found with that tracking number. Try: FGS-2024-001234', 'error');
+            showToast('Error tracking shipment. Please try again.', 'error');
         }
 
         // Reset button
@@ -224,8 +300,18 @@ function initTrackingSystem() {
         submitBtn.disabled = false;
     });
 
+    // Detect carrier from tracking number pattern
+    function detectCarrier(trackingNumber) {
+        for (const [carrier, pattern] of Object.entries(CARRIER_PATTERNS)) {
+            if (pattern.test(trackingNumber)) {
+                return carrier;
+            }
+        }
+        return 'unknown';
+    }
+
     function displayTrackingResult(data, trackingNumber) {
-        document.getElementById('shipmentTitle').textContent = data.title;
+        document.getElementById('shipmentTitle').textContent = data.title || 'Shipment';
         document.getElementById('trackingId').textContent = trackingNumber;
         document.getElementById('shipmentOrigin').textContent = data.origin;
         document.getElementById('shipmentDestination').textContent = data.destination;
@@ -234,8 +320,23 @@ function initTrackingSystem() {
         statusEl.textContent = data.statusText;
         statusEl.className = `tracking-status ${data.status === 'delivered' ? 'delivered' : 'in-transit'}`;
 
-        // Build timeline
-        trackingTimeline.innerHTML = data.timeline.map(item => `
+        // Build timeline with carrier info
+        let timelineHTML = '';
+
+        // Add carrier badge if available
+        if (data.carrier) {
+            timelineHTML += `
+                <div class="carrier-badge">
+                    <span class="carrier-type ${data.carrierType || 'general'}">${data.carrierType === 'air' ? '✈️ Air' : data.carrierType === 'sea' ? '🚢 Sea' : '📦'}</span>
+                    <span class="carrier-name">${data.carrier}</span>
+                    ${data.vessel ? `<span class="vessel-name">Vessel: ${data.vessel}</span>` : ''}
+                    ${data.containerNo ? `<span class="container-no">Container: ${data.containerNo}</span>` : ''}
+                    ${data.awb ? `<span class="awb">AWB: ${data.awb}</span>` : ''}
+                </div>
+            `;
+        }
+
+        timelineHTML += data.timeline.map(item => `
             <div class="timeline-item ${item.status}">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -244,23 +345,167 @@ function initTrackingSystem() {
                 </div>
             </div>
         `).join('');
+
+        trackingTimeline.innerHTML = timelineHTML;
     }
 
-    // Mock function to simulate fetching from real tracking APIs
-    async function fetchFromTrackingAPIs(trackingNumber) {
-        // In production, you would integrate with real APIs:
-        // - DHL: https://api-eu.dhl.com/track/shipments
-        // - FedEx: https://apis.fedex.com/track/v1/trackingnumbers
-        // - UPS: https://onlinetools.ups.com/track/v1/details
-        // - Maersk: https://api.maersk.com/tracking
+    // Fetch from real tracking APIs - Multi-carrier integration
+    async function fetchFromTrackingAPIs(trackingNumber, carrier) {
+        console.log(`Searching ${carrier} for: ${trackingNumber}`);
 
-        // For demo purposes, return null (not found)
-        // In production, you would make actual API calls here
+        // Try multiple tracking services
 
-        console.log(`Searching for tracking number: ${trackingNumber}`);
-        console.log('In production, this would query real carrier APIs');
+        // 1. Try Ship24 API (tracks 1500+ carriers worldwide)
+        try {
+            const ship24Result = await trackWithShip24(trackingNumber);
+            if (ship24Result) return ship24Result;
+        } catch (e) {
+            console.log('Ship24:', e.message);
+        }
+
+        // 2. Try 17Track API
+        try {
+            const track17Result = await trackWith17Track(trackingNumber, carrier);
+            if (track17Result) return track17Result;
+        } catch (e) {
+            console.log('17Track:', e.message);
+        }
+
+        // 3. Try Searates for sea freight
+        if (['container', 'maersk', 'msc', 'cosco', 'evergreen', 'cma_cgm', 'hapag', 'one'].includes(carrier)) {
+            try {
+                const searatesResult = await trackWithSearates(trackingNumber);
+                if (searatesResult) return searatesResult;
+            } catch (e) {
+                console.log('Searates:', e.message);
+            }
+        }
 
         return null;
+    }
+
+    // Ship24 API - Universal tracking (https://www.ship24.com/api)
+    async function trackWithShip24(trackingNumber) {
+        if (TRACKING_CONFIG.ship24.apiKey === 'YOUR_SHIP24_API_KEY') {
+            console.log('Ship24: Configure API key at TRACKING_CONFIG.ship24.apiKey');
+            return null;
+        }
+
+        const response = await fetch(`${TRACKING_CONFIG.ship24.baseUrl}/trackers`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${TRACKING_CONFIG.ship24.apiKey}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ trackingNumber })
+        });
+
+        if (!response.ok) return null;
+        const data = await response.json();
+
+        if (!data.data?.trackings?.[0]) return null;
+        const t = data.data.trackings[0];
+
+        return {
+            title: 'International Shipment',
+            carrier: t.shipment?.carrier?.name || 'Carrier',
+            carrierType: t.shipment?.deliveryType || 'general',
+            origin: t.shipment?.originCountry || 'Origin',
+            destination: t.shipment?.destinationCountry || 'Destination',
+            status: t.shipment?.statusMilestone === 'delivered' ? 'delivered' : 'in-transit',
+            statusText: t.shipment?.statusMilestone || 'In Transit',
+            eta: t.shipment?.estimatedDeliveryDate,
+            timeline: (t.events || []).map((e, i) => ({
+                status: i === 0 ? 'current' : 'completed',
+                title: e.status,
+                date: new Date(e.datetime).toLocaleString(),
+                location: e.location || 'Unknown'
+            })).reverse()
+        };
+    }
+
+    // 17Track API (https://api.17track.net)
+    async function trackWith17Track(trackingNumber, carrier) {
+        if (TRACKING_CONFIG.track17.apiKey === 'YOUR_17TRACK_API_KEY') {
+            console.log('17Track: Configure API key at TRACKING_CONFIG.track17.apiKey');
+            return null;
+        }
+
+        // Register tracking number
+        await fetch(`${TRACKING_CONFIG.track17.baseUrl}/register`, {
+            method: 'POST',
+            headers: { '17token': TRACKING_CONFIG.track17.apiKey, 'Content-Type': 'application/json' },
+            body: JSON.stringify([{ number: trackingNumber }])
+        });
+
+        await new Promise(r => setTimeout(r, 2000));
+
+        // Get tracking info
+        const response = await fetch(`${TRACKING_CONFIG.track17.baseUrl}/gettrackinfo`, {
+            method: 'POST',
+            headers: { '17token': TRACKING_CONFIG.track17.apiKey, 'Content-Type': 'application/json' },
+            body: JSON.stringify([{ number: trackingNumber }])
+        });
+
+        if (!response.ok) return null;
+        const data = await response.json();
+
+        if (!data.data?.accepted?.[0]) return null;
+        const t = data.data.accepted[0];
+        const events = t.track?.z0?.z || [];
+
+        return {
+            title: 'Tracked Shipment',
+            carrier: t.carrier?.name || 'Carrier',
+            carrierType: t.carrier?.type === 1 ? 'air' : 'general',
+            origin: events.length > 0 ? events[events.length - 1].c : 'Origin',
+            destination: t.destination || 'Destination',
+            status: t.e === 40 ? 'delivered' : 'in-transit',
+            statusText: ['Not Found','In Transit','Expired','Pickup','','Undelivered','Delivered'][Math.floor(t.e/10)] || 'In Transit',
+            timeline: events.map((e, i) => ({
+                status: i === 0 ? 'current' : 'completed',
+                title: e.z,
+                date: e.a,
+                location: e.c || 'Unknown'
+            }))
+        };
+    }
+
+    // Searates API - Sea Freight (https://www.searates.com/services/tracking)
+    async function trackWithSearates(trackingNumber) {
+        if (TRACKING_CONFIG.searates.apiKey === 'YOUR_SEARATES_API_KEY') {
+            console.log('Searates: Configure API key at TRACKING_CONFIG.searates.apiKey');
+            return null;
+        }
+
+        const response = await fetch(`${TRACKING_CONFIG.searates.baseUrl}/container/${trackingNumber}`, {
+            headers: { 'x-api-key': TRACKING_CONFIG.searates.apiKey }
+        });
+
+        if (!response.ok) return null;
+        const data = await response.json();
+
+        if (!data.data) return null;
+        const c = data.data;
+
+        return {
+            title: 'Container Shipment',
+            carrier: c.line || 'Shipping Line',
+            carrierType: 'sea',
+            origin: c.origin?.name || 'Origin Port',
+            destination: c.destination?.name || 'Destination Port',
+            status: c.status === 'delivered' ? 'delivered' : 'in-transit',
+            statusText: c.status || 'In Transit',
+            vessel: c.vessel,
+            containerNo: c.container_number,
+            eta: c.eta,
+            timeline: (c.route || []).map((e, i, arr) => ({
+                status: i === arr.length - 1 ? 'current' : 'completed',
+                title: e.status,
+                date: e.date,
+                location: e.location || e.port
+            }))
+        };
     }
 }
 
