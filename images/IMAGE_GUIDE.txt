@@ -1,0 +1,50 @@
+FRESH GLOBAL SOLUTIONS - IMAGE PLACEMENT GUIDE
+==============================================
+
+Save your images with the following names in this folder (c:\Users\diana.ndinda\FreshGlobal\images\):
+
+REQUIRED IMAGES:
+----------------
+
+1. hero-trucks.jpg
+   - The convoy of Mercedes Axor trucks on African roads
+   - This appears in the hero slider background
+
+2. aircraft-operations.jpg
+   - U.S. Air Force C-130 cargo plane operations
+   - Used in hero slider and portfolio gallery
+
+3. port-operations.jpg
+   - Port logistics/shipping container operations
+   - Used in hero slider and portfolio gallery
+
+4. truck-fleet.jpg
+   - Mercedes Axor trucks with Fresh Global branding (close-up)
+   - Used in the About Us section
+
+5. military-transport.jpg
+   - Military vehicles being transported
+   - Featured as a large item in the portfolio gallery
+
+6. forklift-operations.jpg
+   - Forklift operations at warehouse/port
+   - Used in the portfolio gallery
+
+7. crane-operations.jpg
+   - Crane operations at ports/airfields
+   - Used in the portfolio gallery
+
+8. team-photo.jpg
+   - Team photo with staff in safety vests
+   - Used in the Team section
+
+
+IMAGE SPECIFICATIONS:
+--------------------
+- Recommended format: JPG or PNG
+- Hero images: 1920x1080px minimum (landscape)
+- Portfolio images: 800x600px minimum (landscape)
+- Team photo: 1200x900px minimum (landscape)
+
+
+After saving all images, refresh the website to see them in action!
