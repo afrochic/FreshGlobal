@@ -15,7 +15,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="images/Screenshot 2026-02-02 163021.png" alt="Fresh Global Solutions" class="logo-img">
+                <img src="images/PHOTO-2026-02-20-14-39-01.jpg" alt="Fresh Global Solutions" class="logo-img">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -24,9 +24,22 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#portfolio" class="nav-link">Operations</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#services" class="nav-link">Services ▾</a>
+                    <div class="nav-dropdown">
+                        <a href="air-freight.html">Air Freight</a>
+                        <a href="sea-freight.html">Sea Freight</a>
+                        <a href="warehousing.html">Warehousing</a>
+                        <a href="customs-brokerage.html">Custom Brokerage</a>
+                        <a href="transport.html">Transport & Distribution</a>
+                        <a href="supply-chain.html">Supply Chain Consultancy</a>
+                        <a href="automotives.html">Automotives</a>
+                        <a href="perishables.html">Perishables</a>
+                        <a href="pharmaceuticals.html">Pharmaceuticals & Healthcare</a>
+                        <a href="project-logistics.html">Project Logistics</a>
+                    </div>
+                </li>
                 <li><a href="#tracking" class="nav-link">Track Shipment</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="#quote" class="nav-link btn-nav">Get Quote</a></li>
@@ -37,15 +50,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('images/logoelements/PHOTO-2026-01-29-11-18-40.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('images/logoelements/PHOTO-2026-01-29-11-19-10.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('images/logoelements/7be5993e-89f9-496f-b85a-1dc8dc16b4f9.jpeg');"></div>
-        </div>
         <div class="container hero-content">
             <div class="hero-text">
-                <span class="hero-badge">....redefining logistics</span>
-                <h1>Moving Freshness <span class="highlight">Across Borders</span></h1>
+                <h1>Redefining <span class="highlight">Logistics</span></h1>
                 <p>Fresh ideas for your supply chain. Local expertise with worldwide capabilities delivering seamless freight forwarding solutions across Eastern Africa and beyond.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">Our Services</a>
@@ -76,6 +83,7 @@
             </a>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -115,7 +123,7 @@
                 </div>
                 <div class="about-image">
                     <div class="image-card has-image">
-                        <img src="images/logoelements/PHOTO-2026-01-29-11-18-40_1.jpg" alt="Fresh Global Solutions Mercedes Axor Fleet" class="about-img">
+                        <img src="images/Screenshot 2026-02-20 121057.png" alt="Fresh Global Solutions Fleet Operations" class="about-img">
                     </div>
                     <div class="about-badge">
                         <span class="badge-number">2016</span>
@@ -143,19 +151,17 @@
                     </div>
                     <h3>Air Freight</h3>
                     <p>Fast and reliable air cargo services for time-sensitive shipments across the globe with real-time tracking.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="air-freight.html" class="service-link">Learn More <span>&rarr;</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 18h1m17 0h1M6 18H4a1 1 0 01-1-1V8a1 1 0 011-1h12l3 6v4a1 1 0 01-1 1h-2"/>
-                            <circle cx="7" cy="18" r="2"/>
-                            <circle cx="17" cy="18" r="2"/>
+                            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
                     </div>
                     <h3>Sea Freight</h3>
                     <p>Cost-effective ocean freight solutions including FCL and LCL options for all cargo types and sizes.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="sea-freight.html" class="service-link">Learn More <span>&rarr;</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -166,7 +172,7 @@
                     </div>
                     <h3>Warehousing</h3>
                     <p>Secure storage facilities with inventory management, distribution services, and flexible storage options.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="warehousing.html" class="service-link">Learn More <span>&rarr;</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -176,7 +182,7 @@
                     </div>
                     <h3>Custom Brokerage</h3>
                     <p>Expert customs clearance services ensuring compliance and smooth border crossings for your cargo.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="customs-brokerage.html" class="service-link">Learn More <span>&rarr;</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -187,7 +193,7 @@
                     </div>
                     <h3>Supply Chain Consultancy</h3>
                     <p>Strategic consulting to optimize your supply chain operations and reduce costs while improving efficiency.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="supply-chain.html" class="service-link">Learn More <span>&rarr;</span></a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -200,7 +206,92 @@
                     </div>
                     <h3>Transport & Distribution</h3>
                     <p>Reliable road freight and last-mile delivery services with a modern fleet and experienced drivers.</p>
-                    <a href="#contact" class="service-link">Learn More <span>&rarr;</span></a>
+                    <a href="transport.html" class="service-link">Learn More <span>&rarr;</span></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-3 7h8a2 2 0 002-2v-6a2 2 0 00-2-2h-8a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                            <circle cx="7.5" cy="17.5" r="2.5"/>
+                            <circle cx="17.5" cy="17.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Automotives</h3>
+                    <p>Specialized vehicle and automotive parts logistics — from single units to full fleet transportation with expert handling.</p>
+                    <a href="automotives.html" class="service-link">Learn More <span>&rarr;</span></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Perishables</h3>
+                    <p>Cold chain logistics for fresh produce, flowers, and temperature-sensitive goods — maintaining quality from origin to destination.</p>
+                    <a href="perishables.html" class="service-link">Learn More <span>&rarr;</span></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM12 8v8M8 12h8"/>
+                        </svg>
+                    </div>
+                    <h3>Pharmaceuticals & Healthcare</h3>
+                    <p>GDP-compliant pharmaceutical logistics ensuring the integrity and safety of medical products throughout the supply chain.</p>
+                    <a href="pharmaceuticals.html" class="service-link">Learn More <span>&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients-section" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Clients</span>
+                <h2>Trusted by Leading Organizations</h2>
+                <p>We are proud to serve a diverse portfolio of clients across industries — from multinationals to government agencies and NGOs.</p>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <div class="client-icon">🏛️</div>
+                    <span>Government of Kenya</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🌍</div>
+                    <span>United Nations Agencies</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🚑</div>
+                    <span>MSF / Doctors Without Borders</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🏗️</div>
+                    <span>Construction Multinationals</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🌾</div>
+                    <span>Agricultural Exporters</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">💊</div>
+                    <span>Pharmaceutical Companies</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🚗</div>
+                    <span>Automotive Dealers</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🛢️</div>
+                    <span>Energy & Oil Sector</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">📦</div>
+                    <span>E-Commerce Retailers</span>
+                </div>
+                <div class="client-logo">
+                    <div class="client-icon">🏥</div>
+                    <span>Healthcare Institutions</span>
                 </div>
             </div>
         </div>
@@ -320,70 +411,24 @@
         </div>
     </section>
 
-    <!-- Operations Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Operations</span>
-                <h2>Excellence in Action</h2>
-                <p>From road transport to air freight, see how we handle diverse logistics challenges with precision and expertise.</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item large">
-                    <img src="images/logoelements/PHOTO-2026-01-29-11-18-40.jpg" alt="Military Equipment Transport">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Specialized Transport</span>
-                        <h3>Heavy Equipment & Military Logistics</h3>
-                        <p>Expert handling of oversized and sensitive cargo</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/logoelements/PHOTO-2026-01-29-11-19-10.jpg" alt="Air Freight Operations">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Air Freight</span>
-                        <h3>Aircraft Loading Operations</h3>
-                        <p>C-130 cargo plane logistics</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/logoelements/a2f2ad28-b320-4374-9122-99c386e69dc0.jpeg" alt="Warehouse Operations">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Warehousing</span>
-                        <h3>Forklift Operations</h3>
-                        <p>Efficient cargo handling</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/logoelements/PHOTO-2026-01-29-11-18-41.jpg" alt="Crane Operations">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Heavy Lifting</span>
-                        <h3>Crane Operations</h3>
-                        <p>Port & airfield logistics</p>
-                    </div>
-                </div>
-                <div class="portfolio-item large">
-                    <img src="images/logoelements/3c7d763d-b908-4d62-b889-ade4a76b3914.jpeg" alt="Port Logistics">
-                    <div class="portfolio-overlay">
-                        <span class="portfolio-category">Sea Freight</span>
-                        <h3>Port Logistics</h3>
-                        <p>Full container & breakbulk services</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Team Section -->
     <section class="team" id="team">
         <div class="container">
-            <div class="team-content">
-                <div class="team-image">
-                    <img src="images/logoelements/171ee671-10e4-4187-bedb-9257bbe291b2.jpeg" alt="Fresh Global Solutions Team">
-                    <div class="team-badge">
-                        <span class="badge-number">50+</span>
-                        <span class="badge-text">Professionals</span>
-                    </div>
+            <!-- Full-width horizontal photo marquee -->
+            <div class="team-slideshow" id="teamSlideshow">
+                <div class="team-track">
+                    <img src="images/1ce229dd-7acc-4c4b-a10d-0a76078eb9ba.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/377bc757-4d0b-4e24-bafb-095879fe27b2.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/9652d85b-af88-4966-86f0-065d4d5fe347.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/c411e08e-001f-43ab-be5f-2a62d149b431.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <!-- duplicated for seamless loop -->
+                    <img src="images/1ce229dd-7acc-4c4b-a10d-0a76078eb9ba.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/377bc757-4d0b-4e24-bafb-095879fe27b2.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/9652d85b-af88-4966-86f0-065d4d5fe347.JPG" alt="Fresh Global Solutions Team" class="team-slide">
+                    <img src="images/c411e08e-001f-43ab-be5f-2a62d149b431.JPG" alt="Fresh Global Solutions Team" class="team-slide">
                 </div>
+            </div>
+            <div class="team-content" style="grid-template-columns:1fr; margin-top:2.5rem;">
                 <div class="team-info">
                     <span class="section-badge">Our Team</span>
                     <h2>Dedicated Professionals</h2>
@@ -415,62 +460,6 @@
                                 <span class="stat-label">Countries Served</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section" id="locations">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Locations</span>
-                <h2>Global Presence, Local Expertise</h2>
-                <p>Strategically located to serve your logistics needs across Eastern Africa and beyond.</p>
-            </div>
-            <div class="map-container">
-                <div class="map-wrapper" id="mapWrapper">
-                    <div class="map-overlay">
-                        <h4>Fresh Global HQ</h4>
-                        <p>Nairobi, Kenya</p>
-                    </div>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853743783!2d36.68258752776498!3d-1.3028617804389252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1706000000000!5m2!1sen!2sus"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Fresh Global Solutions Locations">
-                    </iframe>
-                </div>
-                <div class="locations-list">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        Our Offices
-                    </h3>
-                    <div class="location-item active" data-lat="-1.3028" data-lng="36.8463" data-city="Nairobi">
-                        <h4>Nairobi, Kenya (HQ)</h4>
-                        <p>3rd Floor, Pili Trade Centre, Mombasa Road</p>
-                        <span class="location-contact">+254 720 146 329</span>
-                    </div>
-                    <div class="location-item" data-lat="-4.0435" data-lng="39.6682" data-city="Mombasa">
-                        <h4>Mombasa, Kenya</h4>
-                        <p>Port Area, Moi Avenue</p>
-                        <span class="location-contact">+254 41 234 5678</span>
-                    </div>
-                    <div class="location-item" data-lat="-6.7924" data-lng="39.2083" data-city="Dar es Salaam">
-                        <h4>Dar es Salaam, Tanzania</h4>
-                        <p>Harbour View, City Center</p>
-                        <span class="location-contact">+255 22 211 2233</span>
-                    </div>
-                    <div class="location-item" data-lat="0.3476" data-lng="32.5825" data-city="Kampala">
-                        <h4>Kampala, Uganda</h4>
-                        <p>Industrial Area, Plot 56</p>
-                        <span class="location-contact">+256 41 456 7890</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -532,6 +521,9 @@
                                     <option value="customs">Custom Brokerage</option>
                                     <option value="transport">Transport & Distribution</option>
                                     <option value="consulting">Supply Chain Consultancy</option>
+                                    <option value="automotives">Automotives</option>
+                                    <option value="perishables">Perishables</option>
+                                    <option value="pharma">Pharmaceuticals & Healthcare</option>
                                 </select>
                             </div>
                         </div>
@@ -558,16 +550,6 @@
                 <div class="contact-card">
                     <div class="contact-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <h4>Visit Us</h4>
-                    <p>3rd Floor, Pili Trade Centre<br>Next to Argyle Grand Hotel<br>Mombasa Road, Nairobi</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
                         </svg>
                     </div>
@@ -584,6 +566,15 @@
                     <h4>Email Us</h4>
                     <p>info@freshglobalsolutions.com</p>
                 </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </div>
+                    <h4>WhatsApp Us</h4>
+                    <p><a href="https://wa.me/254720146329" target="_blank" style="color:inherit;">+254 720 146 329</a><br><a href="https://wa.me/254716647685" target="_blank" style="color:inherit;">+254 716 647 685</a></p>
+                </div>
             </div>
         </div>
     </section>
@@ -594,7 +585,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <img src="images/Screenshot 2026-02-02 163021.png" alt="Fresh Global Solutions" class="logo-img footer-logo-img">
+                        <img src="images/PHOTO-2026-02-20-14-39-01.jpg" alt="Fresh Global Solutions" class="logo-img footer-logo-img">
                     </a>
                     <p>Fresh Global Solutions Ltd - Your trusted partner in international freight forwarding and logistics. Delivering excellence since 2016.</p>
                     <div class="social-links">
@@ -628,33 +619,44 @@
                 <div class="footer-links">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Air Freight</a></li>
-                        <li><a href="#services">Sea Freight</a></li>
-                        <li><a href="#services">Warehousing</a></li>
-                        <li><a href="#services">Custom Brokerage</a></li>
-                        <li><a href="#services">Consulting</a></li>
+                        <li><a href="air-freight.html">Air Freight</a></li>
+                        <li><a href="sea-freight.html">Sea Freight</a></li>
+                        <li><a href="warehousing.html">Warehousing</a></li>
+                        <li><a href="customs-brokerage.html">Custom Brokerage</a></li>
+                        <li><a href="automotives.html">Automotives</a></li>
+                        <li><a href="perishables.html">Perishables</a></li>
+                        <li><a href="pharmaceuticals.html">Pharmaceuticals</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
-                    <h4>Stay Updated</h4>
-                    <p>Subscribe to our newsletter for industry insights and updates.</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" aria-label="Subscribe">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                            </svg>
-                        </button>
-                    </form>
+                    <h4>Contact Us</h4>
+                    <p>+254 720 146 329<br>+254 716 647 685<br>+254 101 146 023</p>
+                    <p style="margin-top:0.75rem;">info@freshglobalsolutions.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Fresh Global Solutions Ltd. All rights reserved.</p>
+                <p>&copy; 2026 Fresh Global Solutions Ltd. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Team photo marquee
+        (function() {
+            var track = document.querySelector('.team-track');
+            if (!track) return;
+            var pos = 0;
+            var speed = 0.5; // px per frame
+            var half = track.scrollWidth / 2;
+            function tick() {
+                pos += speed;
+                if (pos >= half) pos = 0;
+                track.style.transform = 'translateX(-' + pos + 'px)';
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
 </body>
 </html>

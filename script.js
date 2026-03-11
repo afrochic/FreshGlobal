@@ -531,8 +531,14 @@ function initTrackingSystem() {
 }
 
 /* ===================== */
-/* FORMS */
+/* FORMS - Formspree Integration */
 /* ===================== */
+
+// Formspree Form IDs — replace with your actual IDs from https://formspree.io
+// Sign up free at formspree.io → New Form → copy the form ID (e.g. "xpwzabcd")
+const FORMSPREE_QUOTE_ID = 'mjgawbgd';                 // for Get a Quote form
+const FORMSPREE_NEWSLETTER_ID = 'mjgawbgd';            // for Newsletter form
+
 function initForms() {
     // Quote Form
     const quoteForm = document.getElementById('quoteForm');
@@ -544,18 +550,25 @@ function initForms() {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // Collect form data
-        const formData = new FormData(quoteForm);
-        const data = Object.fromEntries(formData);
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_QUOTE_ID}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(new FormData(quoteForm)))
+            });
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // In production, send to backend:
-        // await fetch('/api/quote', { method: 'POST', body: JSON.stringify(data) });
-
-        showToast('Quote request submitted! We\'ll contact you within 24 hours.', 'success');
-        quoteForm.reset();
+            if (response.ok) {
+                showToast('Quote request submitted! We\'ll contact you within 24 hours.', 'success');
+                quoteForm.reset();
+            } else {
+                const err = await response.json();
+                console.error('Formspree error:', err);
+                showToast('Failed to send. Please email us at info@freshglobalsolutions.com', 'error');
+            }
+        } catch (err) {
+            console.error('Network error:', err);
+            showToast('Network error. Please try again or email us directly.', 'error');
+        }
 
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -566,13 +579,22 @@ function initForms() {
     newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const email = newsletterForm.querySelector('input[type="email"]').value;
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_NEWSLETTER_ID}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ email: newsletterForm.querySelector('input[type="email"]').value })
+            });
 
-        // Simulate subscription
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        showToast('Successfully subscribed to our newsletter!', 'success');
-        newsletterForm.reset();
+            if (response.ok) {
+                showToast('Successfully subscribed to our newsletter!', 'success');
+                newsletterForm.reset();
+            } else {
+                showToast('Subscription failed. Please try again.', 'error');
+            }
+        } catch (err) {
+            showToast('Network error. Please try again.', 'error');
+        }
     });
 
     // Input animations

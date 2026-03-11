@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Fresh Global Solutions</title>
+    <meta name="description" content="Gallery of Fresh Global Solutions logistics operations — air freight, sea freight, vehicle transport, warehousing, and more across East Africa.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="images/PHOTO-2026-02-20-14-39-01.jpg" alt="Fresh Global Solutions" class="logo-img"></a>
+            <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item-dropdown"><a href="index.html#services" class="nav-link">Services ▾</a>
+                    <div class="nav-dropdown"><a href="air-freight.html">Air Freight</a><a href="sea-freight.html">Sea Freight</a><a href="warehousing.html">Warehousing</a><a href="customs-brokerage.html">Custom Brokerage</a><a href="transport.html">Transport & Distribution</a><a href="supply-chain.html">Supply Chain Consultancy</a><a href="automotives.html">Automotives</a><a href="perishables.html">Perishables</a><a href="pharmaceuticals.html">Pharmaceuticals & Healthcare</a><a href="project-logistics.html">Project Logistics</a></div>
+                </li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#tracking" class="nav-link">Track Shipment</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html#quote" class="nav-link btn-nav">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="service-hero" style="background-image: url('images/logoelements/PHOTO-2026-01-29-11-18-40.jpg'); background-size: cover; background-position: center;">
+        <div class="hero-bg" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,34,101,0.88) 0%,rgba(7,15,61,0.82) 100%);z-index:0;"></div>
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="service-hero-content">
+                <span class="section-badge">Gallery</span>
+                <h1>Our Operations in Action</h1>
+                <p>A visual tour of Fresh Global Solutions at work — from freight handling and vehicle logistics to warehousing, cold chain operations, and last-mile delivery across East Africa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" style="padding: 5rem 0;">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="vehicles">Vehicles & Fleet</button>
+                <button class="filter-btn" data-filter="operations">Operations</button>
+                <button class="filter-btn" data-filter="cargo">Cargo & Freight</button>
+                <button class="filter-btn" data-filter="cold-chain">Cold Chain</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item wide" data-category="operations" onclick="openLightbox(this)">
+                    <img src="images/1ce229dd-7acc-4c4b-a10d-0a76078eb9ba.JPG" alt="Fresh Global Solutions Team" loading="lazy">
+                    <div class="gallery-overlay"><p>Our Team</p></div>
+                </div>
+                <div class="gallery-item" data-category="operations" onclick="openLightbox(this)">
+                    <img src="images/377bc757-4d0b-4e24-bafb-095879fe27b2.JPG" alt="Fresh Global Solutions Operations" loading="lazy">
+                    <div class="gallery-overlay"><p>Operations</p></div>
+                </div>
+                <div class="gallery-item" data-category="operations" onclick="openLightbox(this)">
+                    <img src="images/9652d85b-af88-4966-86f0-065d4d5fe347.JPG" alt="Fresh Global Solutions Operations" loading="lazy">
+                    <div class="gallery-overlay"><p>Our Work</p></div>
+                </div>
+                <div class="gallery-item wide" data-category="operations" onclick="openLightbox(this)">
+                    <img src="images/c411e08e-001f-43ab-be5f-2a62d149b431.JPG" alt="Fresh Global Solutions Team" loading="lazy">
+                    <div class="gallery-overlay"><p>Team at Work</p></div>
+                </div>
+                <div class="gallery-item" data-category="vehicles" onclick="openLightbox(this)">
+                    <img src="images/PHOTO-2026-02-28-12-41-55.jpg" alt="Heavy Equipment Transport" loading="lazy">
+                    <div class="gallery-overlay"><p>Heavy Equipment Transport</p></div>
+                </div>
+                <div class="gallery-item" data-category="cold-chain" onclick="openLightbox(this)">
+                    <img src="images/PHOTO-2026-02-28-12-05-55.jpg" alt="Fresh Produce Logistics" loading="lazy">
+                    <div class="gallery-overlay"><p>Fresh Produce</p></div>
+                </div>
+                <div class="gallery-item wide" data-category="cargo" onclick="openLightbox(this)">
+                    <img src="images/PHOTO-2026-02-28-12-09-20.jpg" alt="Shipping Containers at Port" loading="lazy">
+                    <div class="gallery-overlay"><p>Port Operations</p></div>
+                </div>
+                <div class="gallery-item" data-category="cargo" onclick="openLightbox(this)">
+                    <img src="images/PHOTO-2026-02-28-12-10-24.jpg" alt="Container Handler at Work" loading="lazy">
+                    <div class="gallery-overlay"><p>Container Handling</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="service-cta">
+        <div class="container">
+            <h2>Ready to Move Your Cargo?</h2>
+            <p>Join hundreds of businesses that trust Fresh Global Solutions for seamless logistics across East Africa and beyond.</p>
+            <a href="index.html#quote" class="btn btn-outline">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="index.html" class="logo"><img src="images/PHOTO-2026-02-20-14-39-01.jpg" alt="Fresh Global Solutions" class="logo-img footer-logo-img"></a><p>Fresh Global Solutions Ltd - Delivering excellence since 2016.</p></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+                <div class="footer-links"><h4>Services</h4><ul><li><a href="air-freight.html">Air Freight</a></li><li><a href="sea-freight.html">Sea Freight</a></li><li><a href="pharmaceuticals.html">Pharmaceuticals</a></li><li><a href="perishables.html">Perishables</a></li><li><a href="automotives.html">Automotives</a></li><li><a href="customs-brokerage.html">Customs</a></li></ul></div>
+                <div class="footer-newsletter"><h4>Contact</h4><p>+254 720 146 329<br>info@freshglobalsolutions.com<br>Mombasa Road, Nairobi</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Fresh Global Solutions Ltd. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Gallery filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxImg').alt = img.alt;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
