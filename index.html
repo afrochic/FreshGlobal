@@ -414,21 +414,7 @@
     <!-- Team Section -->
     <section class="team" id="team">
         <div class="container">
-            <!-- Full-width horizontal photo marquee -->
-            <div class="team-slideshow" id="teamSlideshow">
-                <div class="team-track">
-                    <img src="images/1ce229dd-7acc-4c4b-a10d-0a76078eb9ba.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/377bc757-4d0b-4e24-bafb-095879fe27b2.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/9652d85b-af88-4966-86f0-065d4d5fe347.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/c411e08e-001f-43ab-be5f-2a62d149b431.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <!-- duplicated for seamless loop -->
-                    <img src="images/1ce229dd-7acc-4c4b-a10d-0a76078eb9ba.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/377bc757-4d0b-4e24-bafb-095879fe27b2.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/9652d85b-af88-4966-86f0-065d4d5fe347.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                    <img src="images/c411e08e-001f-43ab-be5f-2a62d149b431.JPG" alt="Fresh Global Solutions Team" class="team-slide">
-                </div>
-            </div>
-            <div class="team-content" style="grid-template-columns:1fr; margin-top:2.5rem;">
+<div class="team-content" style="grid-template-columns:1fr; margin-top:2.5rem;">
                 <div class="team-info">
                     <span class="section-badge">Our Team</span>
                     <h2>Dedicated Professionals</h2>
@@ -641,22 +627,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Team photo marquee
-        (function() {
-            var track = document.querySelector('.team-track');
-            if (!track) return;
-            var pos = 0;
-            var speed = 0.5; // px per frame
-            var half = track.scrollWidth / 2;
-            function tick() {
-                pos += speed;
-                if (pos >= half) pos = 0;
-                track.style.transform = 'translateX(-' + pos + 'px)';
-                requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-        })();
-    </script>
 </body>
 </html>
