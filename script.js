@@ -536,12 +536,13 @@ function initTrackingSystem() {
 
 // Formspree Form IDs — replace with your actual IDs from https://formspree.io
 // Sign up free at formspree.io → New Form → copy the form ID (e.g. "xpwzabcd")
-const FORMSPREE_QUOTE_ID = 'mjgawbgd';                 // for Get a Quote form
-const FORMSPREE_NEWSLETTER_ID = 'mjgawbgd';            // for Newsletter form
+const FORMSPREE_QUOTE_ID = 'mdaydwpp';                 // for Get a Quote form
+const FORMSPREE_NEWSLETTER_ID = 'mdaydwpp';            // for Newsletter form
 
 function initForms() {
     // Quote Form
     const quoteForm = document.getElementById('quoteForm');
+    if (!quoteForm) return;
     quoteForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -576,6 +577,7 @@ function initForms() {
 
     // Newsletter Form
     const newsletterForm = document.getElementById('newsletterForm');
+    if (!newsletterForm) return;
     newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -614,6 +616,7 @@ function initForms() {
 function initMapInteraction() {
     const locationItems = document.querySelectorAll('.location-item');
     const mapWrapper = document.getElementById('mapWrapper');
+    if (!mapWrapper) return;
     const mapOverlay = mapWrapper.querySelector('.map-overlay');
 
     // Map URLs for different locations
